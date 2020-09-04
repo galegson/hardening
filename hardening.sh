@@ -92,7 +92,7 @@ sed -i 's/^admin_space_left_action.*$/admin_space_left_action = halt/' ${auditd_
 sed -i 's/^max_log_file_action.*$/max_log_file_action = keep_logs/' ${auditd_conf}
 
 # CIS 5.1.2-5.1.7
-Change ownership and permission
+#Change ownership and permission
 
 chown root:root /etc/anacrontab	/etc/crontab /etc/cron.hourly /etc/cron.daily /etc/cron.weekly /etc/cron.monthly /etc/cron.d
 chmod 600 /etc/anacrontab /etc/crontab /etc/cron.hourly /etc/cron.daily /etc/cron.weekly /etc/cron.monthly /etc/cron.d
@@ -308,10 +308,10 @@ chown root:root /var/log/user /var/log/kern.log /var/log/daemon.log /var/log/sys
 
 
 # CIS 4.1.1.1
-Configure Audit Log Storage Size
+#Configure Audit Log Storage Size
 sed -i 's/^max_log_file .*$/max_log_file = 1024/' ${auditd_conf}
 # CIS 4.1.1.2
-Disable system on Audit Log Full - This is VERY environment specific (and likely controversial)
+#Disable system on Audit Log Full - This is VERY environment specific (and likely controversial)
 sed -i 's/^space_left_action.*$/space_left_action = email/' ${auditd_conf}
 sed -i 's/^action_mail_acct.*$/action_mail_acct = root/' ${auditd_conf}
 sed -i 's/^admin_space_left_action.*$/admin_space_left_action = halt/' ${auditd_conf}
@@ -335,7 +335,7 @@ chmod 600 /etc/at.allow /etc/cron.allow
 
 
 # CIS 4.1.4 - 4.1.18
-add below lines in  /etc/audit/rules.d/audit.rules
+# add below lines in  /etc/audit/rules.d/audit.rules
 
 -a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change
 -a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change
